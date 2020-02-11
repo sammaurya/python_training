@@ -6,16 +6,16 @@
 
 input =  [('Tuple1', 121), ('Tuple2', 125), ('Tuple1', 135), ('Tuple4', 478)]
 
-myDict = {}
+my_dict = {}
+out_list = list(input)
 
 for first, second in input:
-    keys = myDict.keys()
-
+    keys = my_dict.keys()
     if first in keys:
-        toRemove = (first,second)
-        input.remove(toRemove)
+        to_remove = (first,second)
+        out_list.remove(to_remove)
         continue
     else:
-        myDict[first] = second
+        my_dict[first] = second
 
-print(input)
+print(out_list)

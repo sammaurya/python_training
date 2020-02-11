@@ -8,18 +8,15 @@
 # the text from the file and then use string methods.
 
 
-tableFile = open("/home/daffolap-876/PythonTraining/PythonAssignments/Assignment3/tableFile.txt", "r")
-data = tableFile.readline()
+with open("table_file.txt", "r") as table_file:
 
-myDict = {}
+    my_dict = {}
 
-while data:
-    list = data.split(":")
-    key = int(list[0].strip())
-    values = [ i.strip() for i in list[1].split(",")]
+    for data in table_file:
+        list = data.split(":")
+        key = int(list[0].strip())
+        values = [ i.strip() for i in list[1].split(",")]
+        my_dict[key] = values
 
-    myDict[key] = values
-    data = tableFile.readline()
-
-for key, values in myDict.items():
-    print(key, values)
+    for key, values in my_dict.items():
+        print(key, values)

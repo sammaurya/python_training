@@ -4,13 +4,11 @@
 
 import pickle
 
-pickleFile = open("/home/daffolap-876/PythonTraining/PythonAssignments/Assignment3/tableDict.pickle", "rb")
-myDict = pickle.load(pickleFile)
+with open("table_dict.pickle", "rb") as pickle_file:
+    my_dict = pickle.load(pickle_file)
+    key = int(input("Enter a number [1-40] : "))
 
-key = int(input("Enter a number [1-40] : "))
-
-if key > 0 and key < 41:
-    if key in myDict.keys():
-        print(myDict[key])
-else:
-    print("Out of Range")
+    if key > 0 and key < 41:
+        print(my_dict[key])
+    else:
+        print("Out of Range")

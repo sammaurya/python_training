@@ -1,6 +1,6 @@
 
 
-# Ques1: 
+# Quemy_tiles: 
 # In Scrabble1 each player has a set of tiles with letters on them. 
 # The object of the game is to use those letters to spell words. 
 # The scoring system is complex, but longer words are usually worth
@@ -11,18 +11,19 @@
 # tiles can spell the word. You might have more than one tile with the
 #  same letter, but you can only use each tile once.
 
-s1 = input("Enter string : ")
-s2 = input("Enter substring : ")
+my_tiles = input("Enter string : ")
+enemy_tiles = input("Enter substring : ")
         
 
-def canSpell(s1, s2):
-    listS1 = [0] * len(s1)
+def can_spell(my_tiles, enemy_tiles):
+    
+    tiles_used = [0] * len(my_tiles)
 
-    for x in s2:
+    for x in enemy_tiles:
         found = False
-        for y in range(0,len(s1)):
-            if x == s1[y] and listS1[y] == 0:
-                listS1[y] = 1
+        for y in range(len(my_tiles)):
+            if x == my_tiles[y] and tiles_used[y] == 0:
+                tiles_used[y] = 1
                 found = True
                 break
         
@@ -33,4 +34,4 @@ def canSpell(s1, s2):
     
     return True
 
-print(canSpell(s1, s2))
+print(can_spell(my_tiles, enemy_tiles))

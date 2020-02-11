@@ -9,6 +9,6 @@
 
 s = '12345' * 5
 
-print(s[: len(s)-4: 5])
-print(s[4: len(s): 5])
+print(s[: : 5])
+print(s[4: : 5])
 print(s[::-1])

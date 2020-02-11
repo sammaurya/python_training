@@ -16,27 +16,24 @@
 # is alphabetically smaller, we print it.
 
 
-voteCast = ["john", "johnny", "jackie", "johnny",
+vote_cast = ["john", "johnny", "jackie", "johnny",
          "john", "jackie", "jamie", "jamie", 
          "john",  "johnny", "jamie", "johnny", "john"]
 
-votesCount = {}
+votes_count = {}
 
-for v in voteCast:
-    candidates = votesCount.keys()
+for v in vote_cast:
+    candidates = votes_count.keys()
     if v in candidates:
-        votesCount[v] = votesCount[v] + 1
+        votes_count[v] += 1
     else:
-        votesCount[v] = 1
-    
-# print(votesCount)
+        votes_count[v] = 1
 
 winner = ""
 max = 0
 
-for candidate, votes in votesCount.items():
-
-    print(candidate, votes, max, winner)
+for candidate, votes in votes_count.items():
+    
     if max == 0:
         winner = candidate
         max = votes

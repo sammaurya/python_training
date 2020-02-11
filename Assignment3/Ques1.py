@@ -4,21 +4,15 @@
 #  	2 : 2, 4, 6, 8, 10, 12, 14, 16, 18, 20
 # 3 : 3, 6, 9, 12, 15, 18, 21, 24, 27, 30… and so on.
 
-tableFile = open("/home/daffolap-876/PythonTraining/PythonAssignments/Assignment3/tableFile.txt", "w")
-str = ""
-for i in range(1, 21):
-    # print(i, end=" : ")
-    str = str + "{0:2} : ".format(i)
-    pos = 1
-    for j in range(i, i*10+1,i*pos):
-        if j == i*10:
-            str = str + "{0:3}\n".format(j)
-        else:
-            str = str + "{0:3}, ".format(j)
+with open("table_file.txt", "w") as table_file:
+    str = ""
+    for i in range(1, 21):
 
-        pos = pos + 1
-    
-# print(str)
+        str = str + "{} : ".format(i)
+        for j in range(1, 11):
+            if j == 10:
+                str = str + "{}\n".format(i * j)
+            else:
+                str = str + "{}, ".format(i * j)
 
-tableFile.write(str)
-tableFile.close()
+    table_file.write(str)

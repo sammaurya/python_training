@@ -5,20 +5,18 @@ import pickle
 
 
 
-tableFile = open("/home/daffolap-876/PythonTraining/PythonAssignments/Assignment3/tableFile.txt", "r")
-data = tableFile.readline()
+with open("table_file.txt", "r") as table_file:
 
-myDict = {}
 
-while data:
-    list = data.split(":")
-    key = int(list[0].strip())
-    values = [ i.strip() for i in list[1].split(",")]
+    my_dict = {}
 
-    myDict[key] = values
-    data = tableFile.readline()
+    for data in table_file:
+        list = data.split(":")
+        key = int(list[0].strip())
+        values = [ i.strip() for i in list[1].split(",")]
+        my_dict[key] = values
 
-pickleFile = open("/home/daffolap-876/PythonTraining/PythonAssignments/Assignment3/tableDict.pickle", "wb")
-pickle.dump(myDict, pickleFile)
-pickleFile.close()
+with open("table_dict.pickle", "wb") as pickle_file:
+    pickle.dump(my_dict, pickle_file)
+
 
