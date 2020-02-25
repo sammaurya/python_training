@@ -13,7 +13,7 @@ year = int(birth_date[0])
 month = int(birth_date[1])
 day = int(birth_date[2])
 
-if not date_op.check_date(year, month, day):
+if not date_op.is_valid_date(year, month, day):
     print("Invalid date!!!")
     exit()
 
@@ -25,4 +25,4 @@ print("Age is ", age)
 
 print("Date of birth is ", date_op.birth_date(age))
 
-print("Time until 50 is ", date_op.time_to_50(year, month, day))
+print("Time until 50 is ", date_op.time_to_turn_50(year, month, day))

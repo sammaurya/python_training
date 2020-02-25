@@ -20,27 +20,17 @@ def is_leap_year(year):
     return False
 
 
-def check_date(year, month, day):
-    '''Check validity of any given date
-    '''
-    if is_leap_year(year):
-        if month == 2:
-            if day >= 1 and day <= 29:
-                return True
+def is_valid_date(year, month, day):
+  
+    try:
+        birth_date = datetime(year, month, day)
+        if birth_date > datetime.today():
+            raise Exception
+        
+    except:
+        return False
     else:
-        if month == 2:
-            if day >= 1 and day <= 28:
-                return True
-
-    if month in (1, 3, 5, 7, 8, 10, 12):
-        if day >= 1 and day <= 31:
-            return True
-    elif month in (4, 6, 9, 11):
-        if day >= 1 and day <= 30:
-            return True
-
-    return False
-
+        return True
 
 def get_current_datetime():
     return datetime.today()
@@ -84,14 +74,14 @@ def get_age(year, month, day):
     age = relativedelta.relativedelta(today, birth_date)
 
     # making string with years, months, and days
-    age = "{0} years, {1} months, {2} days".format(
+    age_str = "{0} years, {1} months, {2} days".format(
         age.years, age.months, age.days)
 
     # returning string
-    return age
+    return age_str
 
 
-def time_to_50(year, month, day):
+def time_to_turn_50(year, month, day):
     today = get_current_datetime().date()
     if month == 2 and day == 29:
         day = 28

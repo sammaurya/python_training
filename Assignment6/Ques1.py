@@ -5,14 +5,19 @@ Also create two custom exceptions one for Underflow condition and one for Overfl
 condition that will be raised when stack underflow or overflow condition occurs
 '''
 
-class Error(Exception):
-    pass
+class UnderflowError(Exception):
+    def __init__(self, e):
+        self.e = e
+    
+    def __str__(self):
+        return e
 
-class UnderflowError(Error):
-    pass
-
-class OverflowError(Error):
-    pass
+class OverflowError(Exception):
+    def __init__(self, e):
+        self.e = e
+    
+    def __str__(self):
+        return str(self.e)
 
 class Stack:
 
@@ -21,36 +26,37 @@ class Stack:
         self._size = size
 
     def push(self, value):
-        try:
-            if len(self._list) < self._size:
-                self._list.append(value)
-            else:
-                raise OverflowError
-        except OverflowError:
-            print("OverflowError: Stack is full")
+        if len(self._list) < self._size:
+            self._list.append(value)
+        else:
+            raise OverflowError("OverflowError : Stack is full")
 
     def pop(self):
-        try:
-            if len(self._list) > 0:
-                return self._list.pop()
-            else:
-                raise UnderflowError
-        except UnderflowError:
-            print("UnderflowError : Stack is empty")
+        if len(self._list) > 0:
+            return self._list.pop()
+        else:
+            raise UnderflowError("UnderflowError : Stack is empty")
 
     def __str__(self):
         return "".join(str(value) + ", " for value in self._list)
 
-s = Stack(4)
-s.pop()
-s.push(2)
-s.push(4)
-s.push(6)
-s.push(7)
-print(s)
-s.pop()
-s.push(8)
-print(s)
-s.push(10)
+stack = Stack(4)
+
+try:
+    stack.push(2)
+    stack.push(4)
+    stack.push(6)
+    stack.push(7)
+    print(stack)
+    stack.pop()
+    stack.push(8)
+    print(stack)
+    stack.push(10)
+except OverflowError as e:
+    print(e)
+except UnderflowError as e:
+    print(e)
+except:
+    print("Error occurred")
 
 
